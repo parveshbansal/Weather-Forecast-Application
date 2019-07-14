@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{% static 'p.css'%}">
+</head>
+<body>
+<nav  class="navbar navbar-deafault navbar-inverse">
+	<div class="container">
+			<h1>Weather Forecast Application</h1>
+			<form type="get" action="\home1" style="margin:5px;">
+        <label style="color: white;">Enter City Name:</label>
+    <input  id="search_box" type="text" name="search_box"  style="width: 80%;" placeholder="Search..." >
+    <button id="search_submit" type="submit" >Submit</button>
+</form>
+	</div>
+</nav>
+<div id="pqr">
+    <h4>{{k}}</h4>
+    <h3>{{today}}</h3>
+    <h1 id="p">  {{t}}<span>°</span></h1>
+    <h1>{{s|title}}</h1>
+    {%if cloud == 'rain' or cloud == 'light rain' or cloud == 'thunderstrom' or cloud == 'moderate rain' or cloud == 'showers' or cloud == 'heavy rain' or cloud == 'shower rain' or cloud == 'thunderstorm with light rain'%}
+     <h4>{{cloud|title}}</h4>
+    <h1><figure><canvas id="rain" width="64" height="64">
+        </canvas></figure></i></i></h1>
+{% elif cloud == 'snow' %}
+<h4>{{cloud|title}}</h4>
+    <h1><figure><canvas id="snow" width="64" height="64">
+        </canvas></figure></i></i></h1>
+        {% elif cloud == 'wind' %}
+<h4>{{cloud|title}}</h4>
+    <h1><figure><canvas id="wind" width="64" height="64">
+        </canvas></figure></i></i></h1>
+
+
+{%elif cloud == 'mist' or cloud == 'fog' or cloud == 'dust' or cloud == 'smog' or cloud == 'haze'%}
+<h4>{{cloud|title}}</h4>
+    <h1><figure><canvas id="fog" width="64" height="64">
+        </canvas></figure></i></i></h1>
+
+{%elif cloud == 'partly-cloudy' or cloud == 'few clouds'%}
+<h4>{{cloud|title}}</h4>
+    <h1><figure><canvas id="partly-cloudy-day" width="64" height="64">
+        </canvas></figure></i></i></h1>
+
+
+{%elif cloud == 'clear' or cloud == 'sunny' or cloud == 'clear sky'%}
+<h4>{{cloud|title}}</h4>
+    <h1><figure><canvas id="clear-day" width="64" height="64">
+        </canvas></figure></i></i></h1>
+{%else%}
+<h4>{{cloud|title}}</h4>
+    <h1><figure><canvas id="cloudy" width="64" height="64">
+        </canvas></figure></i></i></h1>
+{%endif%}
+<div  class="for" style="width: 50%; float: left;"><a href="/rain"><button class="btn btn-primary">Rain Detail</button> </a></div>
+<div class="for" style="width: 50%; float: right;"><a href="/one"><button class="btn btn-primary">24Hr Forecast</button> </a></div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="sec">
+  <div style="width: 50%; float:left">
+    <div style="width: 50%; float:left">
+        <h5 id="day">{{a.0}}</h5> {%if b.2 == 'rain' or b.2 == 'light rain' or b.2 == 'thunderstrom' or b.2 == 'moderate rain' or b.2 == 'showers' or b.2 == 'heavy rain' or b.2 == 'shower rain' or b.2 == 'thunderstorm with light rain'%}
+    <h1><figure><img src="{% static 'rain.png'%}"></figure></i></i></h1>
+{% elif b.2 == 'snow' %}
+    <h1><figure><img src="{% static 'snow.png'%}"></figure></i></i></h1>
+        {% elif b.2 == 'wind' %}
+    <h1><figure><img src="{% static 'haze.png'%}"></figure></i></i></h1>
+
+
+{%elif b.2 == 'mist' or b.2 == 'fog' or b.2 == 'dust' or b.2 == 'smog' or b.2 == 'haze'%}
+    <h1><figure><img src="{% static 'haze.png'%}"></figure></i></i></h1>
+
+{%elif b.2 == 'partly-cloudy' or b.2 == 'few clouds'%}
+    <h1><figure><img src="{% static 'cloudy.png'%}"></figure></i></i></h1>
+
+
+{%elif b.2 == 'clear' or b.2 == 'sunny' or b.2 == 'clear sky'%}
+    <h1><figure><img src="{% static 'sun.png'%}"></figure></i></i></h1>
+{%else%}
+    <h1><figure><img src="{% static 'cloudy.png'%}"></figure></i></i></h1>
+{%endif%}
+        <h5 id="day">  {{b.3}}<span>°</span></h5>
+</div>
+<div style="width: 50%; float:right">
+    <h5 id="day">{{a.1}}</h5>
+  {%if b.4 == 'rain' or b.4 == 'light rain' or b.4 == 'thunderstrom' or b.4 == 'moderate rain' or b.4 == 'showers' or b.4 == 'heavy rain' or b.4 == 'shower rain' or b.4 == 'thunderstorm with light rain'%}
+    <h1><figure><img src="{% static 'rain.png'%}"></figure></i></i></h1>
+{% elif b.4 == 'snow' %}
+    <h1><figure><img src="{% static 'snow.png'%}"></figure></i></i></h1>
+        {% elif b.4 == 'wind' %}
+    <h1><figure><img src="{% static 'haze.png'%}"></figure></i></i></h1>
+
+
+{%elif b.4 == 'mist' or b.4 == 'fog' or b.4 == 'dust' or b.4 == 'smog' or b.4 == 'haze'%}
+    <h1><figure><img src="{% static 'haze.png'%}"></figure></i></i></h1>
+
+{%elif b.4 == 'partly-cloudy' or b.4 == 'few clouds'%}
+    <h1><figure><img src="{% static 'cloudy.png'%}"></figure></i></i></h1>
+
+
+{%elif b.4 == 'clear' or b.4 == 'sunny' or b.4 == 'clear sky'%}
+    <h1><figure><img src="{% static 'sun.png'%}"></figure></i></i></h1>
+{%else%}
+    <h1><figure><img src="{% static 'cloudy.png'%}"></figure></i></i></h1>
+{%endif%}
+        <h5 id="day">  {{b.5}}<span>°</span></h5>
+</div>
+
+</div>
+<div style="width: 50%; float:right">
+   <div style="width: 50%; float:left">
+    <h5 id="day">{{a.2}}</h5>
+ {%if b.6 == 'rain' or b.6 == 'light rain' or b.6 == 'thunderstrom' or b.6 == 'moderate rain' or b.6 == 'showers' or b.6 == 'heavy rain' or b.6 == 'shower rain' or b.6 == 'thunderstorm with light rain'%}
+    <h1><figure><img src="{% static 'rain.png'%}"></figure></i></i></h1>
+{% elif b.6 == 'snow' %}
+    <h1><figure><img src="{% static 'snow.png'%}"></figure></i></i></h1>
+        {% elif b.6 == 'wind' %}
+    <h1><figure><img src="{% static 'haze.png'%}"></figure></i></i></h1>
+
+
+{%elif b.6 == 'mist' or b.6 == 'fog' or b.6 == 'dust' or b.6 == 'smog' or b.6 == 'haze'%}
+    <h1><figure><img src="{% static 'haze.png'%}"></figure></i></i></h1>
+
+{%elif b.6 == 'partly-cloudy' or b.6 == 'few clouds'%}
+    <h1><figure><img src="{% static 'cloudy.png'%}"></figure></i></i></h1>
+
+
+{%elif b.6 == 'clear' or b.6 == 'sunny' or b.6 == 'clear sky'%}
+    <h1><figure><img src="{% static 'sun.png'%}"></figure></i></i></h1>
+{%else%}
+    <h1><figure><img src="{% static 'cloudy.png'%}"></figure></i></i></h1>
+{%endif%}
+        <h5 id="day">  {{b.7}}<span>°</span></h5>
+</div>
+<div style="width: 50%; float:right">
+    <h5 id="day">{{ a.3}}</h5>
+  {%if b.8 == 'rain' or b.8 == 'light rain' or b.8 == 'thunderstrom' or b.8 == 'moderate rain' or b.8 == 'showers' or b.8 == 'heavy rain' or b.8 == 'shower rain' or b.8 == 'thunderstorm with light rain'%}
+    <h1><figure><img src="{% static 'rain.png'%}"></figure></i></i></h1>
+{% elif b.8 == 'snow' %}
+    <h1><figure><img src="{% static 'snow.png'%}"></figure></i></i></h1>
+        {% elif b.8 == 'wind' %}
+    <h1><figure><img src="{% static 'haze.png'%}"></figure></i></i></h1>
+
+
+{%elif b.8 == 'mist' or b.8 == 'fog' or b.8 == 'dust' or b.8 == 'smog' or b.8 == 'haze'%}
+    <h1><figure><img src="{% static 'haze.png'%}"></figure></i></i></h1>
+
+{%elif b.8 == 'partly-cloudy' or b.8 == 'few clouds'%}
+    <h1><figure><img src="{% static 'cloudy.png'%}"></figure></i></i></h1>
+
+
+{%elif b.8 == 'clear' or b.8 == 'sunny' or b.8 == 'clear sky'%}
+    <h1><figure><img src="{% static 'sun.png'%}"></figure></i></i></h1>
+{%else%}
+    <h1><figure><img src="{% static 'cloudy.png'%}"></figure></i></i></h1>
+{%endif%}
+        <h5 id="day">  {{b.9}}<span>°</span></h5>
+</div>
+</div>
+</div>
+<h4>©2019 Weather Report Widget.All Rights Reserved | Design by ParveshBansal</h4>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
+    <script>
+      var icons = new Skycons(),
+          list  = [
+            "clear-day", "clear-night", "partly-cloudy-day",
+            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+            "fog"
+          ],
+          i;
+      for(i = list.length; i--; )
+        icons.set(list[i], list[i]);
+
+      icons.play();
+    </script>
+
+</body>
+</html>
