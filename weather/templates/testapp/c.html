@@ -2,8 +2,10 @@
 {% load staticfiles %}
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -11,50 +13,63 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'p.css'%}">
 </head>
 <body>
-<nav  class="navbar navbar-deafault navbar-inverse">
-
-	<div class="container">
-			<h1>Weather Forecast Application</h1>
+<div class="row" style="margin:0px; background-color: #000000;" >
+        <div class="col-12 align-self-center">
+            <h1>Weather Forecast Application</h1>
+        </div>
 	</div>
-</nav>
 <h1>24 Hour Weather of {{s|title}}</h1>
 <h1>Date {{today}}</h1>
-<div id="c"> <i class="fa fa-calendar" aria-hidden="true"></i>
-	Date
-{{b.2}}          <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
-	Temp:{{b.1}}<span>°</span>   <i class="fa fa-cloud" aria-hidden="true">Weather:{{b.0|title}}</i></div>
-	<div id="c"> <i class="fa fa-calendar" aria-hidden="true"></i>
-	Date
-{{b.5}}          <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
-	Temp:{{b.4}}<span>°</span>   <i class="fa fa-cloud" aria-hidden="true"></i>Weather:{{b.3|title}}</div>
-	<div id="c"> <i class="fa fa-calendar" aria-hidden="true"></i>
-	Date
-{{b.8}}          <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
-	Temp:{{b.7}}<span>°</span>   <i class="fa fa-cloud" aria-hidden="true"></i>Weather:{{b.6|title}}</div>
-	<div id="c"> <i class="fa fa-calendar" aria-hidden="true"></i>
-	Date
-{{b.11}}          <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
-	Temp:{{b.10}}<span>°</span>  <i class="fa fa-cloud" aria-hidden="true"></i>Weather:{{b.9|title}}</div>
-	<div id="c"> <i class="fa fa-calendar" aria-hidden="true"></i>
-	Date
-{{b.14}}          <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
-	Temp:{{b.13}}<span>°</span>  <i class="fa fa-cloud" aria-hidden="true"></i>
-Weather:{{b.12|title}}</div>
-	<div id="c"> <i class="fa fa-calendar" aria-hidden="true"></i>
-	Date
-{{b.17}}          <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
-	Temp:{{b.16}}<span>°</span>   <i class="fa fa-cloud" aria-hidden="true"></i>
-Weather:{{b.15|title}}</div>
-	<div id="c"> <i class="fa fa-calendar" aria-hidden="true"></i>
-	Date
-{{b.20}}          <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
-	Temp:{{b.19}}<span>°</span>   <i class="fa fa-cloud" aria-hidden="true"></i>
-Weather:{{b.18|title}}</div>
-	<div id="c"> <i class="fa fa-calendar" aria-hidden="true"></i>
-	Date
-{{b.23}}          <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
-	Temp:{{b.22}}<span>°</span>	<i class="fa fa-cloud" aria-hidden="true"></i>
-Weather:{{b.21|title}}</div>
+<table    class="table table-light">
+  <thead>
+    <tr>
+      <th scope="col"><i class="fa fa-calendar" aria-hidden="true"></i>
+	Date</th>
+      <th scope="col"><i class="fa fa-thermometer-empty" aria-hidden="true">Temp</i>
+	</th>
+      <th scope="col"><i class="fa fa-cloud" aria-hidden="true">Weather</i></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+{{b.2}}           </td>
+      <td>{{b.1}}<span>°</span> </td>
+      <td> {{b.0|title}}</td>
+    </tr>
+    <tr>
+      <td>{{b.5}}</td>
+      <td>{{b.4}} <span>°</span></td>
+      <td>{{b.3|title}} </td>
+    </tr>
+    <tr>
+      <td>{{b.8}}</td>
+      <td>{{b.7}} <span>°</span></td>
+      <td>{{b.6|title}} </td>
+    </tr>
+    <tr>
+      <td>{{b.11}}</td>
+      <td>{{b.10}} <span>°</span></td>
+      <td>{{b.9|title}} </td>
+    </tr><tr>
+      <td>{{b.14}}</td>
+      <td>{{b.13}} <span>°</span></td>
+      <td>{{b.12|title}} </td>
+    </tr><tr>
+      <td>{{b.17}}</td>
+      <td>{{b.16}} <span>°</span></td>
+      <td>{{b.15|title}} </td>
+    </tr><tr>
+      <td>{{b.20}}</td>
+      <td>{{b.19}} <span>°</span></td>
+      <td>{{b.18|title}} </td>
+    </tr><tr>
+      <td>{{b.23}}</td>
+      <td>{{b.22}} <span>°</span></td>
+      <td>{{b.21|title}} </td>
+    </tr>
+  </tbody>
+</table>
 <div class="for"><a href="/"><button class="btn btn-primary">Home</button></a></div> 
 <h4>©2019 Weather Report Widget.All Rights Reserved | Design by ParveshBansal</h4>
 </body>

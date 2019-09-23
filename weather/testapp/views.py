@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import requests as r
 import datetime,calendar
-# Create your views 
+# Create your views
 search_query="hisar"
 def demo(request):
 	if request.method == 'GET':
@@ -104,8 +104,9 @@ def oneday(request):
 				date=json_data['list'][i]['dt_txt']
 				b.append(date)
 	print(b)
-	return render(request,'testapp/c.html',{'today':today,'k':k,'b':b,'s':search_query})	
+	return render(request,'testapp/c.html',{'today':today,'k':k,'b':b,'s':search_query})
 def rain(request):
+	mobileno="9896647535"
 	if request.method == 'GET':
 		search_query = request.GET.get('search_box')
 		mobileno=request.GET.get('number')
@@ -132,15 +133,15 @@ def rain(request):
 					print(k)
 					sum=sum+k
 			if(int(sum)!=0):
-				content="Hello Dear,Their is great chance of rain in your area in next 24 hour for more update please visit our site link=https://floodfinal.pythonanywhere.com"
+				content="Hello Dear,Their is great chance of rain in your area in next 24 hour for more update please visit our site link=https://pessubansal.pythonanywhere.com"
 				no=str(mobileno)
 				s=r.get('https://www.pay2all.in/web-api/send_sms?api_token=FLlX5miGTcTrpJPWuLjPXKfGSJATKi6utDNJD1lMwDSn1J2gAzd7wVUTXZRa&number='+no+'&senderid=KESHAV&message='+content+'&route=4')
-				print(s)
+				#print(s)
 			else:
-				content="Hello Dear,Their is nohance of rain in your area in next 24 hour for more update please visit our site link=https://floodfinal.pythonanywhere.com"
+				content="Hello Dear,Their is no chance of rain in your area in next 24 hour for more update please visit our site link=https://pessubansal.pythonanywhere.com"
 				no=str(mobileno)
 				s=r.get('https://www.pay2all.in/web-api/send_sms?api_token=FLlX5miGTcTrpJPWuLjPXKfGSJATKi6utDNJD1lMwDSn1J2gAzd7wVUTXZRa&number='+no+'&senderid=KESHAV&message='+content+'&route=4')
-				print(s)
+				#print(s)
 			return render(request,'testapp/d.html')
 		else:
 			return render(request,'testapp/b.html')

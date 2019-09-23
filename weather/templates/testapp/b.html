@@ -3,7 +3,9 @@
 <html>
 <head>
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -11,16 +13,21 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'p.css'%}">
 </head>
 <body>
-<nav  class="navbar navbar-deafault navbar-inverse">
-	<div class="container">
-			<h1>Weather Forecast Application</h1>
-			<form type="get" action="\home1" style="margin:5px;">
-        <label style="color: white;">Enter City Name:</label>
-    <input  id="search_box" type="text" name="search_box"  style="width: 80%;" placeholder="Search..." >
-    <button id="search_submit" type="submit" >Submit</button>
-</form>
-	</div>
-</nav>
+<div class="row" style="margin:0px; background-color: #000000;" >
+        <div class="col-12 align-self-center">
+            <h1>Weather Forecast Application</h1>
+        </div>
+        <div class="col-12">
+            <form type="get" action="\home1">
+        <div class="input-group"> 
+                <label style="color: white;font-size:23px;">City Name:</label>
+
+                <input type="text" id="search_box" name="search_box"  class="form-control">
+  <button type="submit"  id="search_submit" class="btn btn-primary" style="margin-left: 2px">Submit</button>
+</div>
+</form>     
+    </div>
+</div>
 <div id="pqr">
   <h1>City name not exists Or spelling not correct Please insert proper name of proper speling</h1>
 </div>
